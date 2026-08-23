@@ -1,0 +1,2143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xbeautyplus — Luxury Hair, Redefined</title>
+    <meta name="description" content="Xbeautyplus — Abuja's most trusted luxury hair vendor. Premium wigs, bundles, and press-on nails for the modern woman.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* === Custom Properties === */
+        :root {
+            --color-primary: #5B21B6;
+            --color-primary-deep: #3B0764;
+            --color-primary-light: #7C3AED;
+            --color-primary-soft: #A78BFA;
+            --color-gold: #C9A96E;
+            --color-gold-light: #E8D5B7;
+            --color-gold-dark: #A68B4B;
+            --color-cream: #FDF8F0;
+            --color-cream-dark: #F5EDE0;
+            --color-dark: #0F0517;
+            --color-dark-surface: #1A0A2E;
+            --color-dark-elevated: #251040;
+            --color-text: #1A0A2E;
+            --color-text-light: #6B5B7B;
+            --color-text-muted: #9B8DAB;
+            --color-white: #FFFFFF;
+            --color-overlay: rgba(15, 5, 23, 0.7);
+            --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --ease-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --shadow-sm: 0 2px 8px rgba(15, 5, 23, 0.06);
+            --shadow-md: 0 8px 30px rgba(15, 5, 23, 0.1);
+            --shadow-lg: 0 20px 60px rgba(15, 5, 23, 0.15);
+            --shadow-gold: 0 8px 30px rgba(201, 169, 110, 0.3);
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+        }
+
+        /* === Reset & Base === */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            background: var(--color-cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        /* === Typography === */
+        .heading-xl {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+        }
+
+        .heading-lg {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+        }
+
+        .heading-md {
+            font-family: var(--font-serif);
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .heading-sm {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .body-lg {
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+
+        .body-sm {
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        /* === Utility === */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 clamp(1.25rem, 4vw, 3rem);
+        }
+
+        .section-padding {
+            padding: clamp(4rem, 10vw, 8rem) 0;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-gold), var(--color-gold-dark));
+            margin-bottom: 1.5rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s var(--ease-luxury), transform 0.8s var(--ease-luxury);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* === Preloader === */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: var(--color-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s var(--ease-luxury), visibility 0.6s;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-inner {
+            text-align: center;
+        }
+
+        .preloader-logo {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-white);
+            letter-spacing: 0.1em;
+        }
+
+        .preloader-logo span {
+            color: var(--color-gold);
+        }
+
+        .preloader-bar {
+            width: 120px;
+            height: 2px;
+            background: var(--color-dark-elevated);
+            margin: 1.5rem auto 0;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .preloader-bar::after {
+            content: '';
+            display: block;
+            width: 40%;
+            height: 100%;
+            background: var(--color-gold);
+            border-radius: 2px;
+            animation: preloaderSlide 1.2s var(--ease-luxury) infinite;
+        }
+
+        @keyframes preloaderSlide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(350%); }
+        }
+
+        /* === Header / Navigation === */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.25rem 0;
+            transition: all 0.4s var(--ease-luxury);
+        }
+
+        .header.scrolled {
+            background: rgba(15, 5, 23, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.875rem 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-text {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-white);
+            letter-spacing: 0.05em;
+        }
+
+        .logo-text span {
+            color: var(--color-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-sans);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.75);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.3s var(--ease-luxury);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-gold);
+            transition: width 0.3s var(--ease-luxury);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.5rem;
+            background: var(--color-gold);
+            color: var(--color-dark) !important;
+            font-weight: 600 !important;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s var(--ease-luxury) !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-gold-light) !important;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .mobile-toggle {
+            display: none;
+            color: var(--color-white);
+            padding: 0.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: var(--color-dark);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s var(--ease-luxury);
+        }
+
+        .mobile-menu.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            color: var(--color-white);
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--color-gold);
+        }
+
+        .mobile-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            color: var(--color-white);
+            padding: 0.5rem;
+        }
+
+        /* === Hero Section === */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--color-dark);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.55;
+            transform: scale(1.05);
+            animation: heroZoom 20s var(--ease-luxury) alternate infinite;
+        }
+
+        @keyframes heroZoom {
+            0% { transform: scale(1.05); }
+            100% { transform: scale(1.12); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background: linear-gradient(
+                135deg,
+                rgba(15, 5, 23, 0.85) 0%,
+                rgba(59, 7, 100, 0.5) 50%,
+                rgba(15, 5, 23, 0.7) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 720px;
+            padding-top: 6rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(201, 169, 110, 0.15);
+            border: 1px solid rgba(201, 169, 110, 0.3);
+            border-radius: 100px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s var(--ease-luxury) 0.3s both;
+        }
+
+        .hero-badge i {
+            color: var(--color-gold);
+            width: 14px;
+            height: 14px;
+        }
+
+        .hero-badge span {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+        }
+
+        .hero-title {
+            color: var(--color-white);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s var(--ease-luxury) 0.5s both;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--color-gold);
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            max-width: 520px;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s var(--ease-luxury) 0.7s both;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s var(--ease-luxury) 0.9s both;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            padding: 1rem 2.25rem;
+            background: var(--color-gold);
+            color: var(--color-dark);
+            font-family: var(--font-sans);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s var(--ease-luxury);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-gold-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-primary i {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s var(--ease-luxury);
+        }
+
+        .btn-primary:hover i {
+            transform: translateX(3px);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            padding: 1rem 2.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: var(--color-white);
+            font-family: var(--font-sans);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s var(--ease-luxury);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+            background: rgba(201, 169, 110, 0.08);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            animation: fadeInUp 0.8s var(--ease-luxury) 1.2s both;
+        }
+
+        .hero-scroll span {
+            font-size: 0.6875rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--color-gold), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; transform: scaleY(0.6); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* === Stats Bar === */
+        .stats-bar {
+            background: var(--color-dark);
+            border-top: 1px solid rgba(201, 169, 110, 0.15);
+            padding: 2.5rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 40px;
+            background: rgba(201, 169, 110, 0.2);
+        }
+
+        .stat-number {
+            font-family: var(--font-serif);
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 700;
+            color: var(--color-gold);
+            line-height: 1;
+            margin-bottom: 0.375rem;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* === Featured Collections === */
+        .collections {
+            background: var(--color-cream);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header .gold-line {
+            margin: 0 auto 1.5rem;
+        }
+
+        .section-header .heading-lg {
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--color-text-light);
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .collection-card {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            cursor: pointer;
+            group: true;
+        }
+
+        .collection-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s var(--ease-luxury);
+        }
+
+        .collection-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .collection-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(15, 5, 23, 0.85) 0%,
+                rgba(15, 5, 23, 0.1) 50%,
+                transparent 100%
+            );
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            transition: background 0.4s var(--ease-luxury);
+        }
+
+        .collection-card:hover .collection-overlay {
+            background: linear-gradient(
+                to top,
+                rgba(15, 5, 23, 0.9) 0%,
+                rgba(59, 7, 100, 0.3) 50%,
+                transparent 100%
+            );
+        }
+
+        .collection-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.375rem 0.75rem;
+            background: rgba(201, 169, 110, 0.2);
+            border: 1px solid rgba(201, 169, 110, 0.3);
+            border-radius: 100px;
+            width: fit-content;
+            margin-bottom: 0.75rem;
+        }
+
+        .collection-tag i {
+            color: var(--color-gold);
+            width: 12px;
+            height: 12px;
+        }
+
+        .collection-tag span {
+            font-size: 0.625rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+        }
+
+        .collection-name {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-white);
+            margin-bottom: 0.375rem;
+        }
+
+        .collection-desc {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1rem;
+        }
+
+        .collection-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            transition: gap 0.3s var(--ease-luxury);
+        }
+
+        .collection-link i {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.3s var(--ease-luxury);
+        }
+
+        .collection-card:hover .collection-link {
+            gap: 0.75rem;
+        }
+
+        .collection-card:hover .collection-link i {
+            transform: translateX(3px);
+        }
+
+        /* === About / Brand Story === */
+        .about {
+            background: var(--color-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(91, 33, 182, 0.15), transparent 70%);
+            pointer-events: none;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(3rem, 6vw, 6rem);
+            align-items: center;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+        }
+
+        .about-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+        }
+
+        .about-image-accent {
+            position: absolute;
+            bottom: -1.5rem;
+            right: -1.5rem;
+            width: 140px;
+            height: 140px;
+            border: 2px solid var(--color-gold);
+            border-radius: var(--radius-lg);
+            opacity: 0.4;
+        }
+
+        .about-experience {
+            position: absolute;
+            bottom: 2rem;
+            left: -1.5rem;
+            background: var(--color-gold);
+            color: var(--color-dark);
+            padding: 1.25rem 1.5rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .about-experience .number {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .about-experience .label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 0.25rem;
+        }
+
+        .about-content .heading-lg {
+            color: var(--color-white);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content .heading-lg em {
+            font-style: italic;
+            color: var(--color-gold);
+        }
+
+        .about-text {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .about-feature-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: var(--radius-md);
+            background: rgba(201, 169, 110, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-feature-icon i {
+            color: var(--color-gold);
+            width: 18px;
+            height: 18px;
+        }
+
+        .about-feature-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.5;
+        }
+
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            padding: 1rem 2rem;
+            background: var(--color-gold);
+            color: var(--color-dark);
+            font-family: var(--font-sans);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s var(--ease-luxury);
+        }
+
+        .btn-gold:hover {
+            background: var(--color-gold-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-gold i {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* === Gallery / Social Proof === */
+        .gallery {
+            background: var(--color-cream);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto auto;
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s var(--ease-luxury);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.06);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(91, 33, 182, 0);
+            transition: background 0.4s var(--ease-luxury);
+        }
+
+        .gallery-item:hover::after {
+            background: rgba(91, 33, 182, 0.15);
+        }
+
+        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+        .gallery-item:nth-child(4) { grid-column: span 2; }
+
+        .gallery-item .gallery-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            z-index: 2;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s var(--ease-luxury);
+        }
+
+        .gallery-item:hover .gallery-icon {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .gallery-icon i {
+            color: var(--color-primary);
+            width: 20px;
+            height: 20px;
+        }
+
+        .gallery-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            padding: 0.875rem 2rem;
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s var(--ease-luxury);
+        }
+
+        .instagram-link:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .instagram-link i {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* === Testimonials === */
+        .testimonials {
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-primary-deep) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201, 169, 110, 0.06), transparent 70%);
+            pointer-events: none;
+        }
+
+        .testimonials .section-header .heading-lg {
+            color: var(--color-white);
+        }
+
+        .testimonials .section-header p {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            transition: all 0.4s var(--ease-luxury);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(201, 169, 110, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-stars i {
+            color: var(--color-gold);
+            width: 16px;
+            height: 16px;
+            fill: var(--color-gold);
+        }
+
+        .testimonial-quote {
+            font-family: var(--font-serif);
+            font-size: 1.0625rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .testimonial-quote::before {
+            content: '\201C';
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            color: var(--color-gold);
+            opacity: 0.3;
+            position: absolute;
+            top: -1.5rem;
+            left: -0.25rem;
+            line-height: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(201, 169, 110, 0.3);
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--color-white);
+            font-size: 0.9375rem;
+        }
+
+        .testimonial-role {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 0.125rem;
+        }
+
+        /* === CTA Section === */
+        .cta-section {
+            background: var(--color-cream);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(91, 33, 182, 0.08), transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            max-width: 640px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content .heading-lg {
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            color: var(--color-text-light);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* === Footer === */
+        .footer {
+            background: var(--color-dark);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-main {
+            padding: 5rem 0 3rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            max-width: 280px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s var(--ease-luxury);
+        }
+
+        .footer-social a:hover {
+            background: var(--color-gold);
+            border-color: var(--color-gold);
+            transform: translateY(-2px);
+        }
+
+        .footer-social a i {
+            width: 16px;
+            height: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            transition: color 0.3s;
+        }
+
+        .footer-social a:hover i {
+            color: var(--color-dark);
+        }
+
+        .footer-column h4 {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-white);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-column a {
+            font-size: 0.875rem;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--color-gold);
+        }
+
+        .footer-newsletter p {
+            font-size: 0.875rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            color: var(--color-white);
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .newsletter-form input:focus {
+            border-color: var(--color-gold);
+        }
+
+        .newsletter-form button {
+            padding: 0.75rem 1.25rem;
+            background: var(--color-gold);
+            color: var(--color-dark);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s var(--ease-luxury);
+        }
+
+        .newsletter-form button:hover {
+            background: var(--color-gold-light);
+        }
+
+        .newsletter-form button i {
+            width: 18px;
+            height: 18px;
+        }
+
+        .footer-divider {
+            border: none;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.06);
+            margin: 0;
+        }
+
+        .footer-bottom {
+            padding: 2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copyright {
+            font-size: 0.8125rem;
+        }
+
+        /* === MexTech Attribution === */
+        .mextech-credit {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .mextech-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mextech-monogram {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 0.8125rem;
+            font-weight: 700;
+            color: var(--color-dark);
+        }
+
+        .mextech-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mextech-name {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.85);
+            transition: color 0.3s;
+        }
+
+        .mextech-name:hover {
+            color: var(--color-gold);
+        }
+
+        .mextech-tagline {
+            font-size: 0.6875rem;
+            color: rgba(255, 255, 255, 0.35);
+            letter-spacing: 0.05em;
+        }
+
+        /* === Back to Top === */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 900;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--color-gold);
+            color: var(--color-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-gold);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.4s var(--ease-luxury);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            background: var(--color-gold-light);
+        }
+
+        .back-to-top i {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* === Responsive === */
+        @media (max-width: 1024px) {
+            .collections-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .collections-grid .collection-card:last-child {
+                grid-column: span 2;
+                aspect-ratio: 16/9;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-image-wrapper {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+            .gallery-item:nth-child(4) { grid-column: span 1; }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .testimonials-grid .testimonial-card:last-child {
+                grid-column: span 2;
+                max-width: 50%;
+                margin: 0 auto;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .stat-item:nth-child(2)::after {
+                display: none;
+            }
+
+            .collections-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .collections-grid .collection-card:last-child {
+                grid-column: span 1;
+                aspect-ratio: 3/4;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid .testimonial-card:last-child {
+                grid-column: span 1;
+                max-width: 100%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-brand {
+                grid-column: span 1;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .mextech-credit {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-actions .btn-primary,
+            .hero-actions .btn-outline {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cta-actions {
+                flex-direction: column;
+            }
+
+            .cta-actions .btn-gold,
+            .cta-actions .btn-outline {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-logo">Xbeauty<span>plus</span></div>
+            <div class="preloader-bar"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span class="logo-text">Xbeauty<span>plus</span></span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#collections">Collections</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact" class="nav-cta">
+                        Shop Now
+                        <i data-lucide="arrow-right"></i>
+                    </a></li>
+                </ul>
+            </nav>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">
+                <i data-lucide="menu" width="24" height="24"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" id="mobileClose" aria-label="Close menu">
+            <i data-lucide="x" width="28" height="28"></i>
+        </button>
+        <a href="#collections" class="mobile-nav-link">Collections</a>
+        <a href="#about" class="mobile-nav-link">About</a>
+        <a href="#gallery" class="mobile-nav-link">Gallery</a>
+        <a href="#testimonials" class="mobile-nav-link">Reviews</a>
+        <a href="#contact" class="mobile-nav-link" style="color: var(--color-gold);">Shop Now</a>
+    </div>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero" id="hero">
+            <div class="hero-bg">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1920&q=85&auto=format&fit=crop" alt="Luxury hair styling — Xbeautyplus premium wigs and bundles">
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <div class="hero-badge">
+                    <i data-lucide="crown"></i>
+                    <span>Abuja's Most Trusted Hair Brand</span>
+                </div>
+                <h1 class="heading-xl hero-title">
+                    Luxury Hair,<br><em>Redefined.</em>
+                </h1>
+                <p class="hero-description">
+                    Premium wigs, bundles, and press-on nails crafted for the modern woman. Over 1,000 satisfied clients trust Xbeautyplus for quality that speaks for itself.
+                </p>
+                <div class="hero-actions">
+                    <a href="#collections" class="btn-primary">
+                        Explore Collections
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                    <a href="https://www.instagram.com/xbeautyplus9ija/" target="_blank" rel="noopener noreferrer" class="btn-outline">
+                        <i data-lucide="instagram"></i>
+                        Follow on Instagram
+                    </a>
+                </div>
+            </div>
+            <div class="hero-scroll">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- Stats Bar -->
+        <section class="stats-bar">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item reveal">
+                        <div class="stat-number">1K+</div>
+                        <div class="stat-label">Satisfied Clients</div>
+                    </div>
+                    <div class="stat-item reveal reveal-delay-1">
+                        <div class="stat-number">1K+</div>
+                        <div class="stat-label">Posts & Counting</div>
+                    </div>
+                    <div class="stat-item reveal reveal-delay-2">
+                        <div class="stat-number">8.7K</div>
+                        <div class="stat-label">Instagram Family</div>
+                    </div>
+                    <div class="stat-item reveal reveal-delay-3">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Quality Guaranteed</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Collections -->
+        <section class="collections section-padding" id="collections">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="gold-line"></div>
+                    <h2 class="heading-lg">Our <em>Collections</em></h2>
+                    <p>Curated luxury hair pieces designed to elevate your every look.</p>
+                </div>
+                <div class="collections-grid">
+                    <article class="collection-card reveal">
+                        <img src="https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?w=800&q=80&auto=format&fit=crop" alt="Premium wig collection — Xbeautyplus frontals and closures" loading="lazy">
+                        <div class="collection-overlay">
+                            <div class="collection-tag">
+                                <i data-lucide="sparkles"></i>
+                                <span>Best Seller</span>
+                            </div>
+                            <h3 class="collection-name">Frontal Wigs</h3>
+                            <p class="collection-desc">Lace frontals & closures for a flawless, natural hairline.</p>
+                            <a href="https://www.instagram.com/xbeautyplus9ija/" target="_blank" rel="noopener noreferrer" class="collection-link">
+                                View Collection
+                                <i data-lucide="arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                    <article class="collection-card reveal reveal-delay-1">
+                        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800&q=80&auto=format&fit=crop" alt="Luxury hair bundles — Xbeautyplus raw and virgin hair" loading="lazy">
+                        <div class="collection-overlay">
+                            <div class="collection-tag">
+                                <i data-lucide="gem"></i>
+                                <span>Premium</span>
+                            </div>
+                            <h3 class="collection-name">Hair Bundles</h3>
+                            <p class="collection-desc">Raw & virgin hair bundles — silky, bouncy, and long-lasting.</p>
+                            <a href="https://www.instagram.com/xbeautyplus9ija/" target="_blank" rel="noopener noreferrer" class="collection-link">
+                                View Collection
+                                <i data-lucide="arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                    <article class="collection-card reveal reveal-delay-2">
+                        <img src="https://images.unsplash.com/photo-1605980776566-0427bb024f65?w=800&q=80&auto=format&fit=crop" alt="Press-on nails collection — Xbeautyplus luxury nail art" loading="lazy">
+                        <div class="collection-overlay">
+                            <div class="collection-tag">
+                                <i data-lucide="sparkle"></i>
+                                <span>New Arrival</span>
+                            </div>
+                            <h3 class="collection-name">Press-On Nails</h3>
+                            <p class="collection-desc">Salon-quality press-on nails in exclusive, handcrafted designs.</p>
+                            <a href="https://www.instagram.com/xbeautyplus9ija/" target="_blank" rel="noopener noreferrer" class="collection-link">
+                                View Collection
+                                <i data-lucide="arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Brand Story -->
+        <section class="about section-padding" id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image-wrapper reveal">
+                        <div class="about-image">
+                            <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&q=80&auto=format&fit=crop" alt="Xbeautyplus founder styling luxury hair in Abuja salon">
+                        </div>
+                        <div class="about-image-accent"></div>
+                        <div class="about-experience">
+                            <div class="number">1K+</div>
+                            <div class="label">Happy Clients</div>
+                        </div>
+                    </div>
+                    <div class="about-content reveal reveal-delay-2">
+                        <div class="gold-line"></div>
+                        <h2 class="heading-lg">
+                            The Story Behind<br><em>Xbeautyplus</em>
+                        </h2>
+                        <p class="about-text body-lg">
+                            Born in the heart of Abuja, Xbeautyplus was founded with one mission — to bring the world's finest luxury hair to the modern African woman. We believe every woman deserves to feel extraordinary, and our curated collections are designed to make that happen.
+                        </p>
+                        <p class="about-text">
+                            From our hand-selected raw bundles to our meticulously crafted frontals and press-on nails, every product passes our uncompromising quality standard. We are not just a hair brand — we are Abuja's most trusted name in luxury hair.
+                        </p>
+                        <div class="about-features">
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <i data-lucide="shield-check"></i>
+                                </div>
+                                <div class="about-feature-text">100% Authentic &<br>Quality-Verified Hair</div>
+                            </div>
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <i data-lucide="truck"></i>
+                                </div>
+                                <div class="about-feature-text">Fast Delivery Across<br>Nigeria & Beyond</div>
+                            </div>
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <i data-lucide="headphones"></i>
+                                </div>
+                                <div class="about-feature-text">Dedicated Styling<br>&amp; Support Team</div>
+                            </div>
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <i data-lucide="heart"></i>
+                                </div>
+                                <div class="about-feature-text">1,000+ Satisfied<br>Clients & Counting</div>
+                            </div>
+                        </div>
+                        <a href="https://www.instagram.com/xbeautyplus9ija/" target="_blank" rel="noopener noreferrer" class="btn-gold">
+                            Learn Our Story
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery / Social Proof -->
+        <section class="gallery section-padding" id="gallery">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="gold-line"></div>
+                    <h2 class="heading-lg">The <em>Xbeautyplus</em> Gallery</h2>
+                    <p>A glimpse into the luxury, the craft, and the community that defines us.</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item reveal">
+                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=900&q=80&auto=format&fit=crop" alt="Xbeautyplus luxury salon experience — premium hair styling" loading="lazy">
+                        <div class="gallery-icon"><i data-lucide="maximize-2"></i></div>
+                    </div>
+                    <div class="gallery-item reveal reveal-delay-1">
+                        <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=600&q=80&auto=format&fit=crop" alt="Premium wig installation — natural hairline styling" loading="lazy">
+                        <div class="gallery-icon"><i data-lucide="maximize-2"></i></div>
+                    </div>
+                    <div class="gallery-item reveal reveal-delay-2">
+                        <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600&q=80&auto=format&fit=crop" alt="Luxury press-on nails — Xbeautyplus handcrafted nail art" loading="lazy">
+                        <div class="gallery-icon"><i data-lucide="maximize-2"></i></div>
+                    </div>
+                    <div class="gallery-item reveal reveal-delay-3">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=80&auto=format&fit=crop" alt="Confident woman wearing Xbeautyplus premium wig" loading="lazy">
+                        <div class="gallery-icon"><i data-lucide="maximize-2"></i></div>
+                    </div>
+                    <div class="gallery-item reveal reveal-delay-1">
+                        <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&q=80&auto=format&fit=crop" alt="Xbeautyplus hair bundles — raw virgin hair display" loading="lazy">
+                        <div class="gallery-icon"><i data-lucide="maximize-2"></i></div>
+                    </div>
+                    <div class="gallery-item reveal reveal-delay-2">
+                        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=600&q=80&auto=format&fit=crop" alt="Natural hair styling — Xbeautyplus quality bundles" loading="lazy">
+                        <div class="gallery-icon"><i data-lucide="maximize-2"></i></div>
+                    </div>
+                </div>
+                <div class="gallery-cta reveal">
+                    <a href="https://www.instagram.com/xbeautyplus9ija/" target="_blank" rel="noopener noreferrer" class="instagram-link">
+                        <i data-lucide="instagram"></i>
+                        View More on Instagram
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials section-padding" id="testimonials">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="gold-line"></div>
+                    <h2 class="heading-lg">What Our Clients <em>Say</em></h2>
+                    <p>Real voices from the Xbeautyplus family — our reputation is built on their trust.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <article class="testimonial-card reveal">
+                        <div class="testimonial-stars">
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                        </div>
+                        <p class="testimonial-quote">
+                            The quality of hair I received from Xbeautyplus was absolutely stunning. My frontal looked so natural — people thought it was my real hair. I'm a client for life.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=96&q=80&auto=format&fit=crop" alt="Client avatar" loading="lazy">
+                            </div>
+                            <div>
+                                <div class="testimonial-name">Adaeze O.</div>
+                                <div class="testimonial-role">Loyal Client — Abuja</div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="testimonial-card reveal reveal-delay-1">
+                        <div class="testimonial-stars">
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                        </div>
+                        <p class="testimonial-quote">
+                            I've tried so many hair vendors, but Xbeautyplus is in a league of its own. The bundles are soft, full, and hold curls beautifully for months. Truly worth every naira.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&q=80&auto=format&fit=crop" alt="Client avatar" loading="lazy">
+                            </div>
+                            <div>
+                                <div class="testimonial-name">Funke A.</div>
+                                <div class="testimonial-role">Repeat Client — Lagos</div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="testimonial-card reveal reveal-delay-2">
+                        <div class="testimonial-stars">
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                        </div>
+                        <p class="testimonial-quote">
+                            The press-on nails are gorgeous and so easy to apply. I get compliments every single time. Xbeautyplus has become my one-stop shop for everything beauty.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=96&q=80&auto=format&fit=crop" alt="Client avatar" loading="lazy">
+                            </div>
+                            <div>
+                                <div class="testimonial-name">Chidinma E.</div>
+                                <div class="testimonial-role">New Client — Port Harcourt</div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section section-padding" id="contact">
+            <div class="container">
+                <div class="cta-content reveal">
+                    <div class="gold-line" style="margin: 0 auto 1.5rem;"></div>
+                    <h2 class="heading-lg">Ready to Experience <em>Luxury</em>?</h2>
+                    <p>Join over 1,000 women who trust Xbeautyplus for their hair and beauty needs. Your transformation starts here.</p>
+                    <div class="cta-actions">
+                        <a href="https://www.instagram.com/xbeautyplus9ija/" target="_blank" rel="noopener noreferrer" class="btn-gold">
+                            <i data-lucide="instagram"></i>
+                            Order via Instagram
+                        </a>
+                        <a href="https://wa.me/2348000000000" target="_blank" rel="noopener noreferrer" class="btn-outline" style="border-color: var(--color-primary); color: var(--color-primary);">
+                            <i data-lucide="message-circle"></i>
+                            Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-main">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <span class="logo-text">Xbeauty<span>plus</span></span>
+                    </a>
+                    <p>Abuja's most trusted luxury hair vendor. Premium wigs, bundles, and press-on nails for the modern woman.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/xbeautyplus9ija/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <i data-lucide="instagram"></i>
+                        </a>
+                        <a href="#" aria-label="Twitter / X">
+                            <i data-lucide="twitter"></i>
+                        </a>
+                        <a href="#" aria-label="TikTok">
+                            <i data-lucide="music"></i>
+                        </a>
+                        <a href="https://wa.me/2348000000000" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                            <i data-lucide="message-circle"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#collections">Collections</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#collections">Frontal Wigs</a></li>
+                        <li><a href="#collections">Hair Bundles</a></li>
+                        <li><a href="#collections">Press-On Nails</a></li>
+                        <li><a href="#collections">Closures</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column footer-newsletter">
+                    <h4>Stay in the Loop</h4>
+                    <p>Get first access to new collections, exclusive deals, and styling inspiration.</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault();">
+                        <input type="email" placeholder="Your email address" aria-label="Email address">
+                        <button type="submit" aria-label="Subscribe">
+                            <i data-lucide="send"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="container footer-bottom">
+            <p class="footer-copyright">&copy; 2026 Xbeautyplus. All rights reserved.</p>
+            <div class="mextech-credit">
+                <a href="https://mextechltd.name.ng" target="_blank" rel="noopener noreferrer" class="mextech-logo">
+                    <div class="mextech-monogram">MT</div>
+                    <div class="mextech-info">
+                        <span class="mextech-name">Developed by MexTech Limited</span>
+                        <span class="mextech-tagline">Premium Digital Solutions</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i data-lucide="chevron-up"></i>
+    </button>
+
+    <script>
+        /* === Initialize Lucide Icons === */
+        lucide.createIcons();
+
+        /* === Preloader === */
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 800);
+        });
+
+        /* === Sticky Header === */
+        const header = document.getElementById('header');
+        let lastScrollY = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > 60) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+
+        /* === Mobile Menu === */
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileClose = document.getElementById('mobileClose');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        /* === Scroll Reveal === */
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        /* === Back to Top === */
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        /* === Counter Animation === */
+        const statNumbers = document.querySelectorAll('.stat-number');
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const text = el.textContent;
+                    const match = text.match(/([\d.]+)/);
+                    if (match) {
+                        const target = parseFloat(match[1]);
+                        const suffix = text.replace(match[1], '').trim();
+                        const isDecimal = text.includes('.');
+                        let current = 0;
+                        const increment = target / 60;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                current = target;
+                                clearInterval(timer);
+                            }
+                            const display = isDecimal ? current.toFixed(1) : Math.floor(current);
+                            el.textContent = display + (suffix === 'K' ? 'K+' : suffix === '%' ? '%' : '+');
+                        }, 16);
+                    }
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(el => counterObserver.observe(el));
+
+        /* === Smooth Scroll for Anchor Links === */
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
